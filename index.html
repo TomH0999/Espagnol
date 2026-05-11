@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Bac Espagnol B1</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --red: #c0392b;
+            --yellow: #f39c12;
+            --dark: #1a1a2e;
+            --mid: #16213e;
+            --card: #0f3460;
+            --accent: #e94560;
+            --gold: #f5c518;
+            --text: #eaeaea;
+            --muted: #a0a8b8;
+            --green: #27ae60;
+            --blue: #2980b9;
+            --purple: #8e44ad;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #c0392b 0%, #8e1a0e 40%, #1a1a2e 100%);
+            padding: 48px 32px 36px;
+            text-align: center;
+            border-bottom: 3px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "🇪🇸";
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.06;
+            top: -30px;
+            right: -20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #fff;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            margin-top: 10px;
+            color: #f0d0cc;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* NOUVEAU STYLE BOUTON QUIZ HERO */
+        .btn-quiz-hero {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 28px;
+            background-color: var(--gold);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-quiz-hero:hover {
+            transform: scale(1.05);
+            background-color: #fff;
+        }
+
+        .badges {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(26, 26, 46, 0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid #2a2a4e;
+            z-index: 100;
+            padding: 0 16px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav::-webkit-scrollbar {
+            height: 3px;
+        }
+
+        nav::-webkit-scrollbar-thumb {
+            background: var(--accent);
+        }
+
+        .nav-inner {
+            display: inline-flex;
+            gap: 4px;
+            padding: 10px 0;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 7px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .nav-btn:hover,
+        .nav-btn.active {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        /* BOUTON QUIZ DANS NAV */
+        .nav-quiz {
+            background: var(--green) !important;
+            color: white !important;
+            margin-left: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* LAYOUT */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 32px 20px 80px;
+        }
+
+        /* SECTIONS */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--gold);
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* VOCAB GRID */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 10px;
+        }
+
+        .vocab-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 10px 14px;
+            border-left: 3px solid var(--accent);
+            transition: transform 0.15s;
+        }
+
+        .vocab-item:hover {
+            transform: translateX(3px);
+        }
+
+        .vocab-es {
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .vocab-fr {
+            color: var(--muted);
+            font-size: 0.82rem;
+            margin-top: 2px;
+        }
+
+        /* PHRASES */
+        .phrase-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .phrase-item {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            padding: 12px 16px;
+            border-left: 3px solid var(--blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .phrase-es {
+            font-weight: 500;
+            color: #fff;
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .phrase-fr {
+            color: var(--muted);
+            font-size: 0.85rem;
+            flex: 1;
+            min-width: 160px;
+            font-style: italic;
+        }
+
+        /* TABLES */
+        .table-wrap {
+            overflow-x: auto;
+            margin-top: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        th {
+            background: rgba(233, 69, 96, 0.3);
+            color: var(--gold);
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 9px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            vertical-align: top;
+            line-height: 1.5;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .pron {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .stem {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .ending {
+            color: var(--gold);
+        }
+
+        /* IRREGULAR VERBS */
+        .irreg-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px;
+        }
+
+        .irreg-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 16px;
+            border-top: 3px solid var(--purple);
+        }
+
+        .irreg-verb {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .irreg-meaning {
+            color: var(--muted);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .irreg-forms {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .irreg-row {
+            display: flex;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+
+        .irreg-sub {
+            color: var(--muted);
+            min-width: 60px;
+        }
+
+        .irreg-val {
+            color: #fff;
+        }
+
+        /* TIPS */
+        .tip-box {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.15), rgba(39, 174, 96, 0.05));
+            border: 1px solid rgba(39, 174, 96, 0.4);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 14px;
+        }
+
+        .tip-box strong {
+            color: var(--green);
+        }
+
+        .tip-icon {
+            font-size: 1.2rem;
+            margin-right: 6px;
+        }
+
+        /* COLOR TAGS */
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+
+        .tag-red {
+            background: rgba(192, 57, 43, 0.3);
+            color: #e74c3c;
+        }
+
+        .tag-blue {
+            background: rgba(41, 128, 185, 0.3);
+            color: #5dade2;
+        }
+
+        .tag-green {
+            background: rgba(39, 174, 96, 0.3);
+            color: #58d68d;
+        }
+
+        .tag-yellow {
+            background: rgba(243, 156, 18, 0.3);
+            color: #f5c518;
+        }
+
+        .tag-purple {
+            background: rgba(142, 68, 173, 0.3);
+            color: #c39bd3;
+        }
+
+        /* SUBHEADER */
+        .sub-head {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 24px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sub-head::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* COLOR-CODED PRONOUN */
+        .yo {
+            color: #e74c3c;
+        }
+
+        .tu {
+            color: #e67e22;
+        }
+
+        .el {
+            color: #f1c40f;
+        }
+
+        .nos {
+            color: #2ecc71;
+        }
+
+        .vos {
+            color: #1abc9c;
+        }
+
+        .ellos {
+            color: #3498db;
+        }
+
+        @media (max-width: 600px) {
+            .vocab-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .irreg-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .phrase-item {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <h1>Bac Espagnol <span>B1</span></h1>
+        <p>Compréhension Écrite · Expression Écrite · Fiche de révision complète</p>
+
+        <!-- BOUTON AJOUTÉ ICI -->
+        <a href="quiz.html" class="btn-quiz-hero">✍️ S'entraîner au Quiz</a>
+
+        <div class="badges">
+            <span class="badge">📖 CE — Comprensión</span>
+            <span class="badge">✍️ EE — Expresión</span>
+            <span class="badge">⏱ 2h</span>
+            <span class="badge">🎯 Niveau B1</span>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav-inner">
+            <button class="nav-btn active" onclick="show('vocab')">📚 Vocabulaire</button>
+            <button class="nav-btn" onclick="show('phrases')">💬 Phrases types</button>
+            <button class="nav-btn" onclick="show('conj')">📊 Conjugaisons</button>
+            <button class="nav-btn" onclick="show('irreg')">⚡ Irréguliers</button>
+            <button class="nav-btn" onclick="show('ce')">🔍 Méthode CE</button>
+            <button class="nav-btn" onclick="show('ee')">✍️ Méthode EE</button>
+
+            <!-- BOUTON AJOUTÉ DANS LA NAV -->
+            <a href="quiz.html" class="nav-btn nav-quiz">🚀 Mode Quiz</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- ===================== VOCABULAIRE ===================== -->
+        <div class="section active" id="vocab">
+            <div class="section-title">📚 Vocabulaire essentiel</div>
+
+            <div class="card">
+                <h3>🔗 Connecteurs logiques</h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-es">sin embargo</div>
+                        <div class="vocab-fr">cependant, pourtant</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">además</div>
+                        <div class="vocab-fr">de plus, en outre</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">por lo tanto</div>
+                        <div class="vocab-fr">par conséquent, donc</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">no obstante</div>
+                        <div class="vocab-fr">néanmoins, toutefois</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">por eso / por ello</div>
+                        <div class="vocab-fr">c'est pourquoi, pour cela</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">a pesar de (que)</div>
+                        <div class="vocab-fr">malgré, bien que</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">aunque</div>
+                        <div class="vocab-fr">bien que, même si</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">puesto que / ya que</div>
+                        <div class="vocab-fr">puisque, étant donné que</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">es decir</div>
+                        <div class="vocab-fr">c'est-à-dire</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">en cambio</div>
+                        <div class="vocab-fr">en revanche</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">de hecho</div>
+                        <div class="vocab-fr">en fait, effectivement</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">por un lado… por otro</div>
+                        <div class="vocab-fr">d'un côté… de l'autre</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">tanto… como</div>
+                        <div class="vocab-fr">aussi bien… que</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">ante todo</div>
+                        <div class="vocab-fr">avant tout, surtout</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">en definitiva</div>
+                        <div class="vocab-fr">en définitive, bref</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">a fin de (que)</div>
+                        <div class="vocab-fr">afin de/que</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🌍 Thèmes fréquents au bac</h3>
+                <div class="sub-head">Société & jeunesse</div>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-es">la juventud</div>
+                        <div class="vocab-fr">la jeunesse</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">el paro / el desempleo</div>
+                        <div class="vocab-fr">le chômage</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">la desigualdad</div>
+                        <div class="vocab-fr">l'inégalité</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">el bienestar</div>
+                        <div class="vocab-fr">le bien-être</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">la pobreza / la riqueza</div>
+                        <div class="vocab-fr">la pauvreté / la richesse</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">la convivencia</div>
+                        <div class="vocab-fr">la cohabitation, le vivre ensemble</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">el ciudadano</div>
+                        <div class="vocab-fr">le citoyen</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">el poder adquisitivo</div>
+                        <div class="vocab-fr">le pouvoir d'achat</div>
+                    </div>
+                </div>
+
+                <div class="sub-head">Environnement & technologie</div>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-es">el medio ambiente</div>
+                        <div class="vocab-fr">l'environnement</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">el cambio climático</div>
+                        <div class="vocab-fr">le changement climatique</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">las energías renovables</div>
+                        <div class="vocab-fr">les énergies renouvelables</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">el desarrollo sostenible</div>
+                        <div class="vocab-fr">le développement durable</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">las redes sociales</div>
+                        <div class="vocab-fr">les réseaux sociaux</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">la inteligencia artificial</div>
+                        <div class="vocab-fr">l'intelligence artificielle</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">la brecha digital</div>
+                        <div class="vocab-fr">la fracture numérique</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">el consumo / el consumidor</div>
+                        <div class="vocab-fr">la consommation / le consommateur</div>
+                    </div>
+                </div>
+
+                <div class="sub-head">Immigration & identité</div>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-es">la inmigración / el inmigrante</div>
+                        <div class="vocab-fr">l'immigration / l'immigrant</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">la integración</div>
+                        <div class="vocab-fr">l'intégration</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">la identidad</div>
+                        <div class="vocab-fr">l'identité</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">la herencia cultural</div>
+                        <div class="vocab-fr">l'héritage culturel</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">la diversity</div>
+                        <div class="vocab-fr">la diversité</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">el racismo / la discriminación</div>
+                        <div class="vocab-fr">le racisme / la discrimination</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>⚙️ Verbes utiles & courants</h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-es">afirmar / sostener</div>
+                        <div class="vocab-fr">affirmer / soutenir</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">destacar</div>
+                        <div class="vocab-fr">mettre en avant, souligner</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">señalar</div>
+                        <div class="vocab-fr">signaler, indiquer, souligner</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">plantear</div>
+                        <div class="vocab-fr">poser (un problème), soulever</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">suponer</div>
+                        <div class="vocab-fr">supposer, représenter</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">lograr / conseguir</div>
+                        <div class="vocab-fr">réussir à, parvenir à</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">tratar de + inf.</div>
+                        <div class="vocab-fr">essayer de + inf.</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">depender de</div>
+                        <div class="vocab-fr">dépendre de</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">influir en</div>
+                        <div class="vocab-fr">influencer, avoir un impact sur</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">llevar a cabo</div>
+                        <div class="vocab-fr">mener à bien, réaliser</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">darse cuenta de</div>
+                        <div class="vocab-fr">se rendre compte de</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">hacer frente a</div>
+                        <div class="vocab-fr">faire face à</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">tener en cuenta</div>
+                        <div class="vocab-fr">tenir compte de, prendre en compte</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">poner en marcha</div>
+                        <div class="vocab-fr">mettre en place, lancer</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">cabe destacar</div>
+                        <div class="vocab-fr">il convient de souligner</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">cabe preguntarse</div>
+                        <div class="vocab-fr">on peut se demander</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📝 Adjectifs & adverbes utiles</h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-es">actual(mente)</div>
+                        <div class="vocab-fr">actuel(lement) — ⚠️ pas "actuellement"="réellement"</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">actualmente</div>
+                        <div class="vocab-fr">actuellement, de nos jours</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">realmente / verdaderamente</div>
+                        <div class="vocab-fr">vraiment, réellement</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">especialmente / sobre todo</div>
+                        <div class="vocab-fr">surtout, particulièrement</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">cada vez más / menos</div>
+                        <div class="vocab-fr">de plus en plus / de moins en moins</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">sin duda (alguna)</div>
+                        <div class="vocab-fr">sans aucun doute</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">a menudo / frecuentemente</div>
+                        <div class="vocab-fr">souvent, fréquemment</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">apenas</div>
+                        <div class="vocab-fr">à peine, presque pas</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">todavía / aún</div>
+                        <div class="vocab-fr">encore, toujours</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">ya no</div>
+                        <div class="vocab-fr">ne plus</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">imprescindible</div>
+                        <div class="vocab-fr">indispensable, incontournable</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-es">llamativo/a</div>
+                        <div class="vocab-fr">frappant, qui attire l'attention</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== PHRASES TYPES ===================== -->
+        <div class="section" id="phrases">
+            <div class="section-title">💬 Phrases types & formulations</div>
+
+            <div class="card">
+                <h3>📋 Introduire une idée</h3>
+                <div class="phrase-list">
+                    <div class="phrase-item">
+                        <div class="phrase-es">En primer lugar, … / En segundo lugar, …</div>
+                        <div class="phrase-fr">En premier lieu… / En second lieu…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Ante todo, es importante señalar que…</div>
+                        <div class="phrase-fr">Avant tout, il est important de souligner que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Cabe destacar que…</div>
+                        <div class="phrase-fr">Il convient de souligner que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Hay que tener en cuenta que…</div>
+                        <div class="phrase-fr">Il faut tenir compte du fait que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Lo que más llama la atención es…</div>
+                        <div class="phrase-fr">Ce qui frappe le plus, c'est…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">El texto trata de / habla de / aborda…</div>
+                        <div class="phrase-fr">Le texte traite de / parle de / aborde…</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🗣️ Exprimer une opinion</h3>
+                <div class="phrase-list">
+                    <div class="phrase-item">
+                        <div class="phrase-es">Desde mi punto de vista, …</div>
+                        <div class="phrase-fr">De mon point de vue, …</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">En mi opinión, …</div>
+                        <div class="phrase-fr">À mon avis, …</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">A mi modo de ver, …</div>
+                        <div class="phrase-fr">À ma façon de voir les choses, …</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Creo / Pienso / Considero que…</div>
+                        <div class="phrase-fr">Je crois / pense / considère que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Me parece que… / Me parece importante…</div>
+                        <div class="phrase-fr">Il me semble que… / Il me semble important…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Estoy (totalmente) de acuerdo con…</div>
+                        <div class="phrase-fr">Je suis (totalement) d'accord avec…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">No estoy de acuerdo con… porque…</div>
+                        <div class="phrase-fr">Je ne suis pas d'accord avec… parce que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Hay que reconocer que…</div>
+                        <div class="phrase-fr">Il faut reconnaître que…</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📊 Compréhension écrite (CE) — reformuler / citer</h3>
+                <div class="phrase-list">
+                    <div class="phrase-item">
+                        <div class="phrase-es">Según el texto / el autor…</div>
+                        <div class="phrase-fr">Selon le texte / l'auteur…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">El texto menciona que…</div>
+                        <div class="phrase-fr">Le texte mentionne que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">El autor afirma / sostiene / señala que…</div>
+                        <div class="phrase-fr">L'auteur affirme / soutient / souligne que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">En el párrafo X, se puede leer que…</div>
+                        <div class="phrase-fr">Dans le paragraphe X, on peut lire que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Lo que el texto quiere decir es que…</div>
+                        <div class="phrase-fr">Ce que le texte veut dire, c'est que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Se trata de un artículo / una entrevista / un testimonio…</div>
+                        <div class="phrase-fr">Il s'agit d'un article / d'une interview / d'un témoignage…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">El objetivo del texto es informar / convencer / denunciar…</div>
+                        <div class="phrase-fr">Le but du texte est d'informer / convaincre / dénoncer…</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>✍️ Expression écrite (EE) — structurer</h3>
+                <div class="phrase-list">
+                    <div class="phrase-item">
+                        <div class="phrase-es">Para empezar, quisiera abordar el tema de…</div>
+                        <div class="phrase-fr">Pour commencer, je voudrais aborder le sujet de…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Por un lado, … ; por otro lado, …</div>
+                        <div class="phrase-fr">D'un côté… ; de l'autre…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Además de esto, no hay que olvidar que…</div>
+                        <div class="phrase-fr">En plus de cela, il ne faut pas oublier que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Para concluir / En conclusión, …</div>
+                        <div class="phrase-fr">Pour conclure / En conclusion, …</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">En resumen, podemos decir que…</div>
+                        <div class="phrase-fr">En résumé, on peut dire que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Espero que + subjonctif</div>
+                        <div class="phrase-fr">J'espère que… (+ subjonctif en espagnol !)</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Sería necesario / conveniente + inf.</div>
+                        <div class="phrase-fr">Il serait nécessaire / approprié de…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Si tuviera que elegir, diría que…</div>
+                        <div class="phrase-fr">Si je devais choisir, je dirais que…</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>⚖️ Exprimer une cause, conséquence, opposition</h3>
+                <div class="phrase-list">
+                    <div class="phrase-item">
+                        <div class="phrase-es">Debido a (que)… / A causa de…</div>
+                        <div class="phrase-fr">En raison de… / À cause de… (cause)</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Gracias a…</div>
+                        <div class="phrase-fr">Grâce à… (cause positive)</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Como consecuencia (de)…</div>
+                        <div class="phrase-fr">Par conséquent, en conséquence de…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Esto provoca / genera / implica…</div>
+                        <div class="phrase-fr">Cela provoque / génère / implique…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">A pesar de todo, …</div>
+                        <div class="phrase-fr">Malgré tout, …</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Aunque + indicatif/subjonctif</div>
+                        <div class="phrase-fr">Bien que / même si (+ subj si hypothétique)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== CONJUGAISONS ===================== -->
+        <div class="section" id="conj">
+            <div class="section-title">📊 Conjugaisons — Tableaux complets</div>
+
+            <div class="tip-box">
+                <span class="tip-icon">💡</span><strong>Rappel des 3 groupes :</strong>
+                <br>• Groupe 1 : verbes en <strong>-AR</strong> (hablar, trabajar, escuchar…)
+                <br>• Groupe 2 : verbes en <strong>-ER</strong> (comer, beber, leer…)
+                <br>• Groupe 3 : verbes en <strong>-IR</strong> (vivir, escribir, abrir…)
+                <br><br>Les pronoms : <span class="yo">yo</span>, <span class="tu">tú</span>, <span
+                    class="el">él/ella/Ud.</span>, <span class="nos">nosotros</span>, <span class="vos">vosotros</span>,
+                <span class="ellos">ellos/Uds.</span>
+            </div>
+
+            <!-- PRESENTE -->
+            <div class="card">
+                <h3>⏱ Présent (Presente de indicativo)</h3>
+                <div class="table-wrap">
+                    <table>
+                        <tr>
+                            <th>Pronom</th>
+                            <th>-AR (hablar)</th>
+                            <th>-ER (comer)</th>
+                            <th>-IR (vivir)</th>
+                        </tr>
+                        <tr>
+                            <td class="yo">yo</td>
+                            <td><span class="stem">habl</span><span class="ending">o</span></td>
+                            <td><span class="stem">com</span><span class="ending">o</span></td>
+                            <td><span class="stem">viv</span><span class="ending">o</span></td>
+                        </tr>
+                        <tr>
+                            <td class="tu">tú</td>
+                            <td><span class="stem">habl</span><span class="ending">as</span></td>
+                            <td><span class="stem">com</span><span class="ending">es</span></td>
+                            <td><span class="stem">viv</span><span class="ending">es</span></td>
+                        </tr>
+                        <tr>
+                            <td class="el">él/ella</td>
+                            <td><span class="stem">habl</span><span class="ending">a</span></td>
+                            <td><span class="stem">com</span><span class="ending">e</span></td>
+                            <td><span class="stem">viv</span><span class="ending">e</span></td>
+                        </tr>
+                        <tr>
+                            <td class="nos">nosotros</td>
+                            <td><span class="stem">habl</span><span class="ending">amos</span></td>
+                            <td><span class="stem">com</span><span class="ending">emos</span></td>
+                            <td><span class="stem">viv</span><span class="ending">imos</span></td>
+                        </tr>
+                        <tr>
+                            <td class="vos">vosotros</td>
+                            <td><span class="stem">habl</span><span class="ending">áis</span></td>
+                            <td><span class="stem">com</span><span class="ending">éis</span></td>
+                            <td><span class="stem">viv</span><span class="ending">ís</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ellos">ellos</td>
+                            <td><span class="stem">habl</span><span class="ending">an</span></td>
+                            <td><span class="stem">com</span><span class="ending">en</span></td>
+                            <td><span class="stem">viv</span><span class="ending">en</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tip-box" style="margin-top:12px">
+                    <strong>⚠️ Attention :</strong> -ER et -IR ont les mêmes terminaisons sauf <em>nosotros</em> et
+                    <em>vosotros</em>.
+                </div>
+            </div>
+
+            <!-- PRÉTÉRIT INDÉFINI -->
+            <div class="card">
+                <h3>⏮ Passé simple (Pretérito indefinido) — action ponctuelle dans le passé</h3>
+                <div class="table-wrap">
+                    <table>
+                        <tr>
+                            <th>Pronom</th>
+                            <th>-AR (hablar)</th>
+                            <th>-ER (comer)</th>
+                            <th>-IR (vivir)</th>
+                        </tr>
+                        <tr>
+                            <td class="yo">yo</td>
+                            <td><span class="stem">habl</span><span class="ending">é</span></td>
+                            <td><span class="stem">com</span><span class="ending">í</span></td>
+                            <td><span class="stem">viv</span><span class="ending">í</span></td>
+                        </tr>
+                        <tr>
+                            <td class="tu">tú</td>
+                            <td><span class="stem">habl</span><span class="ending">aste</span></td>
+                            <td><span class="stem">com</span><span class="ending">iste</span></td>
+                            <td><span class="stem">viv</span><span class="ending">iste</span></td>
+                        </tr>
+                        <tr>
+                            <td class="el">él/ella</td>
+                            <td><span class="stem">habl</span><span class="ending">ó</span></td>
+                            <td><span class="stem">com</span><span class="ending">ió</span></td>
+                            <td><span class="stem">viv</span><span class="ending">ió</span></td>
+                        </tr>
+                        <tr>
+                            <td class="nos">nosotros</td>
+                            <td><span class="stem">habl</span><span class="ending">amos</span></td>
+                            <td><span class="stem">com</span><span class="ending">imos</span></td>
+                            <td><span class="stem">viv</span><span class="ending">imos</span></td>
+                        </tr>
+                        <tr>
+                            <td class="vos">vosotros</td>
+                            <td><span class="stem">habl</span><span class="ending">asteis</span></td>
+                            <td><span class="stem">com</span><span class="ending">isteis</span></td>
+                            <td><span class="stem">viv</span><span class="ending">isteis</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ellos">ellos</td>
+                            <td><span class="stem">habl</span><span class="ending">aron</span></td>
+                            <td><span class="stem">com</span><span class="ending">ieron</span></td>
+                            <td><span class="stem">viv</span><span class="ending">ieron</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tip-box" style="margin-top:12px">
+                    <strong>Marqueurs temporels :</strong> ayer, la semana pasada, en 2010, hace X años, de repente,
+                    entonces, un día, aquel día
+                </div>
+            </div>
+
+            <!-- IMPARFAIT -->
+            <div class="card">
+                <h3>📜 Imparfait (Pretérito imperfecto) — habitude, description, contexte passé</h3>
+                <div class="table-wrap">
+                    <table>
+                        <tr>
+                            <th>Pronom</th>
+                            <th>-AR (hablar)</th>
+                            <th>-ER (comer)</th>
+                            <th>-IR (vivir)</th>
+                        </tr>
+                        <tr>
+                            <td class="yo">yo</td>
+                            <td><span class="stem">habl</span><span class="ending">aba</span></td>
+                            <td><span class="stem">com</span><span class="ending">ía</span></td>
+                            <td><span class="stem">viv</span><span class="ending">ía</span></td>
+                        </tr>
+                        <tr>
+                            <td class="tu">tú</td>
+                            <td><span class="stem">habl</span><span class="ending">abas</span></td>
+                            <td><span class="stem">com</span><span class="ending">ías</span></td>
+                            <td><span class="stem">viv</span><span class="ending">ías</span></td>
+                        </tr>
+                        <tr>
+                            <td class="el">él/ella</td>
+                            <td><span class="stem">habl</span><span class="ending">aba</span></td>
+                            <td><span class="stem">com</span><span class="ending">ía</span></td>
+                            <td><span class="stem">viv</span><span class="ending">ía</span></td>
+                        </tr>
+                        <tr>
+                            <td class="nos">nosotros</td>
+                            <td><span class="stem">habl</span><span class="ending">ábamos</span></td>
+                            <td><span class="stem">com</span><span class="ending">íamos</span></td>
+                            <td><span class="stem">viv</span><span class="ending">íamos</span></td>
+                        </tr>
+                        <tr>
+                            <td class="vos">vosotros</td>
+                            <td><span class="stem">habl</span><span class="ending">abais</span></td>
+                            <td><span class="stem">com</span><span class="ending">íais</span></td>
+                            <td><span class="stem">viv</span><span class="ending">íais</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ellos">ellos</td>
+                            <td><span class="stem">habl</span><span class="ending">aban</span></td>
+                            <td><span class="stem">com</span><span class="ending">ían</span></td>
+                            <td><span class="stem">viv</span><span class="ending">ían</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tip-box" style="margin-top:12px">
+                    <strong>Marqueurs temporels :</strong> antes, cuando era pequeño, siempre, a menudo, todos los días,
+                    en aquella época, de niño
+                    <br><strong>⚠️ Seulement 3 irréguliers :</strong> ser (era…), ir (iba…), ver (veía…)
+                </div>
+            </div>
+
+            <!-- FUTUR -->
+            <div class="card">
+                <h3>🔮 Futur simple (Futuro simple) — même radical pour les 3 groupes !</h3>
+                <div class="table-wrap">
+                    <table>
+                        <tr>
+                            <th>Pronom</th>
+                            <th>-AR (hablar)</th>
+                            <th>-ER (comer)</th>
+                            <th>-IR (vivir)</th>
+                        </tr>
+                        <tr>
+                            <td class="yo">yo</td>
+                            <td><span class="stem">hablar</span><span class="ending">é</span></td>
+                            <td><span class="stem">comer</span><span class="ending">é</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">é</span></td>
+                        </tr>
+                        <tr>
+                            <td class="tu">tú</td>
+                            <td><span class="stem">hablar</span><span class="ending">ás</span></td>
+                            <td><span class="stem">comer</span><span class="ending">ás</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">ás</span></td>
+                        </tr>
+                        <tr>
+                            <td class="el">él/ella</td>
+                            <td><span class="stem">hablar</span><span class="ending">á</span></td>
+                            <td><span class="stem">comer</span><span class="ending">á</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">á</span></td>
+                        </tr>
+                        <tr>
+                            <td class="nos">nosotros</td>
+                            <td><span class="stem">hablar</span><span class="ending">emos</span></td>
+                            <td><span class="stem">comer</span><span class="ending">emos</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">emos</span></td>
+                        </tr>
+                        <tr>
+                            <td class="vos">vosotros</td>
+                            <td><span class="stem">hablar</span><span class="ending">éis</span></td>
+                            <td><span class="stem">comer</span><span class="ending">éis</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">éis</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ellos">ellos</td>
+                            <td><span class="stem">hablar</span><span class="ending">án</span></td>
+                            <td><span class="stem">comer</span><span class="ending">án</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">án</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tip-box" style="margin-top:12px">
+                    <strong>Astuce :</strong> On ajoute simplement les terminaisons <strong>é, ás, á, emos, éis,
+                        án</strong> à l'INFINITIF (sauf irréguliers).
+                    <br><strong>Futur proche (oral) :</strong> ir a + infinitif → voy a hablar (je vais parler)
+                </div>
+            </div>
+
+            <!-- CONDITIONNEL -->
+            <div class="card">
+                <h3>🔧 Conditionnel (Condicional simple) — "je ferais"</h3>
+                <div class="table-wrap">
+                    <table>
+                        <tr>
+                            <th>Pronom</th>
+                            <th>-AR (hablar)</th>
+                            <th>-ER (comer)</th>
+                            <th>-IR (vivir)</th>
+                        </tr>
+                        <tr>
+                            <td class="yo">yo</td>
+                            <td><span class="stem">hablar</span><span class="ending">ía</span></td>
+                            <td><span class="stem">comer</span><span class="ending">ía</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">ía</span></td>
+                        </tr>
+                        <tr>
+                            <td class="tu">tú</td>
+                            <td><span class="stem">hablar</span><span class="ending">ías</span></td>
+                            <td><span class="stem">comer</span><span class="ending">ías</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">ías</span></td>
+                        </tr>
+                        <tr>
+                            <td class="el">él/ella</td>
+                            <td><span class="stem">hablar</span><span class="ending">ía</span></td>
+                            <td><span class="stem">comer</span><span class="ending">ía</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">ía</span></td>
+                        </tr>
+                        <tr>
+                            <td class="nos">nosotros</td>
+                            <td><span class="stem">hablar</span><span class="ending">íamos</span></td>
+                            <td><span class="stem">comer</span><span class="ending">íamos</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">íamos</span></td>
+                        </tr>
+                        <tr>
+                            <td class="vos">vosotros</td>
+                            <td><span class="stem">hablar</span><span class="ending">íais</span></td>
+                            <td><span class="stem">comer</span><span class="ending">íais</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">íais</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ellos">ellos</td>
+                            <td><span class="stem">hablar</span><span class="ending">ían</span></td>
+                            <td><span class="stem">comer</span><span class="ending">ían</span></td>
+                            <td><span class="stem">vivir</span><span class="ending">ían</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tip-box" style="margin-top:12px">
+                    <strong>Astuce :</strong> Même radical que le futur + terminaisons de l'imparfait -ER/-IR (ía, ías,
+                    ía…). Les irréguliers du futur sont les mêmes !
+                </div>
+            </div>
+
+            <!-- SUBJONCTIF PRÉSENT -->
+            <div class="card">
+                <h3>🌀 Subjonctif présent (Presente de subjuntivo)</h3>
+                <div class="table-wrap">
+                    <table>
+                        <tr>
+                            <th>Pronom</th>
+                            <th>-AR (hablar)</th>
+                            <th>-ER (comer)</th>
+                            <th>-IR (vivir)</th>
+                        </tr>
+                        <tr>
+                            <td class="yo">yo</td>
+                            <td><span class="stem">habl</span><span class="ending">e</span></td>
+                            <td><span class="stem">com</span><span class="ending">a</span></td>
+                            <td><span class="stem">viv</span><span class="ending">a</span></td>
+                        </tr>
+                        <tr>
+                            <td class="tu">tú</td>
+                            <td><span class="stem">habl</span><span class="ending">es</span></td>
+                            <td><span class="stem">com</span><span class="ending">as</span></td>
+                            <td><span class="stem">viv</span><span class="ending">as</span></td>
+                        </tr>
+                        <tr>
+                            <td class="el">él/ella</td>
+                            <td><span class="stem">habl</span><span class="ending">e</span></td>
+                            <td><span class="stem">com</span><span class="ending">a</span></td>
+                            <td><span class="stem">viv</span><span class="ending">a</span></td>
+                        </tr>
+                        <tr>
+                            <td class="nos">nosotros</td>
+                            <td><span class="stem">habl</span><span class="ending">emos</span></td>
+                            <td><span class="stem">com</span><span class="ending">amos</span></td>
+                            <td><span class="stem">viv</span><span class="ending">amos</span></td>
+                        </tr>
+                        <tr>
+                            <td class="vos">vosotros</td>
+                            <td><span class="stem">habl</span><span class="ending">éis</span></td>
+                            <td><span class="stem">com</span><span class="ending">áis</span></td>
+                            <td><span class="stem">viv</span><span class="ending">áis</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ellos">ellos</td>
+                            <td><span class="stem">habl</span><span class="ending">en</span></td>
+                            <td><span class="stem">com</span><span class="ending">an</span></td>
+                            <td><span class="stem">viv</span><span class="ending">an</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tip-box" style="margin-top:12px">
+                    <strong>Astuce "voyelle opposée" :</strong> -AR → terminaisons en <strong>E</strong>, -ER/-IR →
+                    terminaisons en <strong>A</strong>.
+                    <br><strong>Usages clés :</strong> quiero que vengas, espero que sea, es importante que + subj.,
+                    para que + subj., ojalá + subj.
+                </div>
+            </div>
+
+            <!-- SUBJONCTIF IMPARFAIT -->
+            <div class="card">
+                <h3>🌀 Subjonctif imparfait (Imperfecto de subjuntivo) — si + …, voudrais que…</h3>
+                <div class="table-wrap">
+                    <table>
+                        <tr>
+                            <th>Pronom</th>
+                            <th>-AR (hablar)</th>
+                            <th>-ER (comer)</th>
+                            <th>-IR (vivir)</th>
+                        </tr>
+                        <tr>
+                            <td class="yo">yo</td>
+                            <td><span class="stem">habl</span><span class="ending">ara</span></td>
+                            <td><span class="stem">com</span><span class="ending">iera</span></td>
+                            <td><span class="stem">viv</span><span class="ending">iera</span></td>
+                        </tr>
+                        <tr>
+                            <td class="tu">tú</td>
+                            <td><span class="stem">habl</span><span class="ending">aras</span></td>
+                            <td><span class="stem">com</span><span class="ending">ieras</span></td>
+                            <td><span class="stem">viv</span><span class="ending">ieras</span></td>
+                        </tr>
+                        <tr>
+                            <td class="el">él/ella</td>
+                            <td><span class="stem">habl</span><span class="ending">ara</span></td>
+                            <td><span class="stem">com</span><span class="ending">iera</span></td>
+                            <td><span class="stem">viv</span><span class="ending">iera</span></td>
+                        </tr>
+                        <tr>
+                            <td class="nos">nosotros</td>
+                            <td><span class="stem">habl</span><span class="ending">áramos</span></td>
+                            <td><span class="stem">com</span><span class="ending">iéramos</span></td>
+                            <td><span class="stem">viv</span><span class="ending">iéramos</span></td>
+                        </tr>
+                        <tr>
+                            <td class="vos">vosotros</td>
+                            <td><span class="stem">habl</span><span class="ending">arais</span></td>
+                            <td><span class="stem">com</span><span class="ending">ierais</span></td>
+                            <td><span class="stem">viv</span><span class="ending">ierais</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ellos">ellos</td>
+                            <td><span class="stem">habl</span><span class="ending">aran</span></td>
+                            <td><span class="stem">com</span><span class="ending">ieran</span></td>
+                            <td><span class="stem">viv</span><span class="ending">ieran</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tip-box" style="margin-top:12px">
+                    <strong>Usage principal :</strong> <em>Si yo tuviera dinero, viajaría mucho.</em> (Si j'avais de
+                    l'argent, je voyagerais beaucoup.)
+                    <br>➡ <strong>Si + subj. imparfait → conditionnel</strong>
+                </div>
+            </div>
+
+            <!-- IMPÉRATIF -->
+            <div class="card">
+                <h3>📢 Impératif (Imperativo) — donner des ordres / conseils</h3>
+                <div class="table-wrap">
+                    <table>
+                        <tr>
+                            <th>Pronom</th>
+                            <th>-AR (hablar)</th>
+                            <th>-ER (comer)</th>
+                            <th>-IR (vivir)</th>
+                        </tr>
+                        <tr>
+                            <td class="tu">tú (+)</td>
+                            <td>habl<span class="ending">a</span></td>
+                            <td>com<span class="ending">e</span></td>
+                            <td>viv<span class="ending">e</span></td>
+                        </tr>
+                        <tr>
+                            <td>tú (−)</td>
+                            <td>no habl<span class="ending">es</span></td>
+                            <td>no com<span class="ending">as</span></td>
+                            <td>no viv<span class="ending">as</span></td>
+                        </tr>
+                        <tr>
+                            <td class="vos">vosotros (+)</td>
+                            <td>habl<span class="ending">ad</span></td>
+                            <td>com<span class="ending">ed</span></td>
+                            <td>viv<span class="ending">id</span></td>
+                        </tr>
+                        <tr>
+                            <td>vosotros (−)</td>
+                            <td>no habl<span class="ending">éis</span></td>
+                            <td>no com<span class="ending">áis</span></td>
+                            <td>no viv<span class="ending">áis</span></td>
+                        </tr>
+                        <tr>
+                            <td class="el">Ud. (+)</td>
+                            <td>habl<span class="ending">e</span></td>
+                            <td>com<span class="ending">a</span></td>
+                            <td>viv<span class="ending">a</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ellos">Uds. (+)</td>
+                            <td>habl<span class="ending">en</span></td>
+                            <td>com<span class="ending">an</span></td>
+                            <td>viv<span class="ending">an</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tip-box" style="margin-top:12px">
+                    <strong>Astuce :</strong> Impératif négatif = subjonctif présent ! / Impératif formel (Ud./Uds.) =
+                    toujours subjonctif.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ===================== IRRÉGULIERS ===================== -->
+        <div class="section" id="irreg">
+            <div class="section-title">⚡ Verbes irréguliers essentiels</div>
+
+            <div class="tip-box">
+                <span class="tip-icon">🎯</span> Ces verbes sont les plus utilisés et tombent souvent à l'examen.
+                Apprends-les par cœur !
+            </div>
+
+            <p class="sub-head">🔑 SER & ESTAR (être)</p>
+            <div class="irreg-grid">
+                <div class="irreg-card">
+                    <div class="irreg-verb">SER</div>
+                    <div class="irreg-meaning">être (permanent : identité, origine, profession)</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">soy, eres, es, somos, sois, son</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">fui, fuiste, fue, fuimos, fuisteis, fueron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-yellow">Imparfait</span><span
+                                class="irreg-val">era, eras, era, éramos, erais, eran</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">sea, seas, sea, seamos, seáis, sean</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">ESTAR</div>
+                    <div class="irreg-meaning">être (temporaire : état, localisation, humeur)</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">estoy, estás, está, estamos, estáis, están</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">estuve, estuviste, estuvo, estuvimos, estuvisteis, estuvieron</span>
+                        </div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-yellow">Imparfait</span><span
+                                class="irreg-val">estaba, estabas… (régulier)</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">esté, estés, esté, estemos, estéis, estén</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="sub-head">🔑 Verbes très fréquents</p>
+            <div class="irreg-grid">
+                <div class="irreg-card">
+                    <div class="irreg-verb">TENER</div>
+                    <div class="irreg-meaning">avoir</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">tengo, tienes, tiene, tenemos, tenéis, tienen</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">tuve, tuviste, tuvo, tuvimos, tuvisteis, tuvieron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-red">Futur</span><span
+                                class="irreg-val">tendré, tendrás, tendrá…</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">tenga, tengas, tenga…</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-yellow">Impér.</span><span
+                                class="irreg-val">ten (tú) / tened (vosotros)</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">IR</div>
+                    <div class="irreg-meaning">aller</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">voy, vas, va, vamos, vais, van</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">fui, fuiste, fue, fuimos, fuisteis, fueron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-yellow">Imparfait</span><span
+                                class="irreg-val">iba, ibas, iba, íbamos, ibais, iban</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">vaya, vayas, vaya…</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">HACER</div>
+                    <div class="irreg-meaning">faire</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">hago, haces, hace, hacemos, hacéis, hacen</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">hice, hiciste, hizo, hicimos, hicisteis, hicieron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-red">Futur</span><span
+                                class="irreg-val">haré, harás, hará…</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">haga, hagas, haga…</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">PODER</div>
+                    <div class="irreg-meaning">pouvoir</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">puedo, puedes, peut, podemos, podéis, pueden</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">pude, pudiste, pudo, pudimos, pudisteis, pudieron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-red">Futur</span><span
+                                class="irreg-val">podré, podrás, podrá…</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">pueda, puedas, pueda, podamos…</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">QUERER</div>
+                    <div class="irreg-meaning">vouloir, aimer</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">quiero, quieres, quiere, queremos, queréis, quieren</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">quise, quisiste, quiso, quisimos, quisisteis, quisieron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-red">Futur</span><span
+                                class="irreg-val">querré, querrás, querrá…</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">quiera, quieras, quiera, queramos…</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">SABER</div>
+                    <div class="irreg-meaning">savoir</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">sé, sabes, sabe, sabemos, sabéis, saben</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">supe, supiste, supo, supimos, supisteis, supieron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-red">Futur</span><span
+                                class="irreg-val">sabré, sabrás, sabrá…</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">sepa, sepas, sepa…</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">DECIR</div>
+                    <div class="irreg-meaning">dire</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">digo, dices, dice, decimos, decís, dicen</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">dije, dijiste, dijo, dijimos, dijisteis, dijeron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-red">Futur</span><span
+                                class="irreg-val">diré, dirás, dirá…</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">diga, digas, diga…</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">VENIR</div>
+                    <div class="irreg-meaning">venir</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">vengo, vienes, viene, venimos, venís, vienen</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">vine, viniste, vino, vinimos, vinisteis, vinieron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-red">Futur</span><span
+                                class="irreg-val">vendré, vendrás, vendrá…</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">venga, vengas, venga…</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">PONER</div>
+                    <div class="irreg-meaning">mettre, poser</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">pongo, pones, pone, ponemos, ponéis, ponen</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">puse, pusiste, puso, pusimos, pusisteis, pusieron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-red">Futur</span><span
+                                class="irreg-val">pondré, pondrás, pondrá…</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">ponga, pongas, ponga…</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">HABER</div>
+                    <div class="irreg-meaning">avoir (auxiliaire) → hay = il y a</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">he, has, ha, hemos, habéis, han</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">hube, hubiste, hubo, hubimos, hubisteis, hubieron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-red">Futur</span><span
+                                class="irreg-val">habré, habrás, habrá…</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">haya, hayas, haya…</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">DAR</div>
+                    <div class="irreg-meaning">donner</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">doy, das, da, damos, dais, dan</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">di, diste, dio, dimos, disteis, dieron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-yellow">Imparfait</span><span
+                                class="irreg-val">daba, dabas… (régulier)</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">dé, des, dé…</span></div>
+                    </div>
+                </div>
+                <div class="irreg-card">
+                    <div class="irreg-verb">VER</div>
+                    <div class="irreg-meaning">voir</div>
+                    <div class="irreg-forms">
+                        <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
+                                class="irreg-val">veo, ves, ve, vemos, veis, ven</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
+                                class="irreg-val">vi, viste, vio, vimos, visteis, vieron</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-yellow">Imparfait</span><span
+                                class="irreg-val">veía, veías, veía… (irrégulier !)</span></div>
+                        <div class="irreg-row"><span class="irreg-sub tag tag-purple">Subj.</span><span
+                                class="irreg-val">vea, veas, vea…</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="sub-head">⚡ Irréguliers au futur & conditionnel (même radical)</p>
+            <div class="card">
+                <div class="table-wrap">
+                    <table>
+                        <tr>
+                            <th>Infinitif</th>
+                            <th>Radical modifié</th>
+                            <th>Futur (yo)</th>
+                            <th>Conditionnel (yo)</th>
+                        </tr>
+                        <tr>
+                            <td>tener</td>
+                            <td><span class="stem">tendr-</span></td>
+                            <td>tendré</td>
+                            <td>tendría</td>
+                        </tr>
+                        <tr>
+                            <td>poder</td>
+                            <td><span class="stem">podr-</span></td>
+                            <td>podré</td>
+                            <td>podría</td>
+                        </tr>
+                        <tr>
+                            <td>hacer</td>
+                            <td><span class="stem">har-</span></td>
+                            <td>haré</td>
+                            <td>haría</td>
+                        </tr>
+                        <tr>
+                            <td>venir</td>
+                            <td><span class="stem">vendr-</span></td>
+                            <td>vendré</td>
+                            <td>vendría</td>
+                        </tr>
+                        <tr>
+                            <td>poner</td>
+                            <td><span class="stem">pondr-</span></td>
+                            <td>pondré</td>
+                            <td>pondría</td>
+                        </tr>
+                        <tr>
+                            <td>salir</td>
+                            <td><span class="stem">saldr-</span></td>
+                            <td>saldré</td>
+                            <td>saldría</td>
+                        </tr>
+                        <tr>
+                            <td>saber</td>
+                            <td><span class="stem">sabr-</span></td>
+                            <td>sabré</td>
+                            <td>sabría</td>
+                        </tr>
+                        <tr>
+                            <td>querer</td>
+                            <td><span class="stem">querr-</span></td>
+                            <td>querré</td>
+                            <td>querría</td>
+                        </tr>
+                        <tr>
+                            <td>decir</td>
+                            <td><span class="stem">dir-</span></td>
+                            <td>diré</td>
+                            <td>diría</td>
+                        </tr>
+                        <tr>
+                            <td>haber</td>
+                            <td><span class="stem">habr-</span></td>
+                            <td>habré</td>
+                            <td>habría</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <p class="sub-head">🔄 Verbes à diphtongue (e→ie / o→ue) — changement aux 3 pers. sing. + 3e plur.</p>
+            <div class="card">
+                <div class="table-wrap">
+                    <table>
+                        <tr>
+                            <th>Type</th>
+                            <th>Verbe</th>
+                            <th>yo</th>
+                            <th>tú</th>
+                            <th>él</th>
+                            <th>nosotros</th>
+                            <th>vosotros</th>
+                            <th>ellos</th>
+                        </tr>
+                        <tr>
+                            <td>e→ie</td>
+                            <td>pensar</td>
+                            <td>pienso</td>
+                            <td>piensas</td>
+                            <td>piensa</td>
+                            <td>pensamos</td>
+                            <td>pensáis</td>
+                            <td>piensan</td>
+                        </tr>
+                        <tr>
+                            <td>e→ie</td>
+                            <td>querer</td>
+                            <td>quiero</td>
+                            <td>quieres</td>
+                            <td>quiere</td>
+                            <td>queremos</td>
+                            <td>queréis</td>
+                            <td>quieren</td>
+                        </tr>
+                        <tr>
+                            <td>o→ue</td>
+                            <td>poder</td>
+                            <td>puedo</td>
+                            <td>puedes</td>
+                            <td>puede</td>
+                            <td>podemos</td>
+                            <td>podéis</td>
+                            <td>pueden</td>
+                        </tr>
+                        <tr>
+                            <td>o→ue</td>
+                            <td>volver</td>
+                            <td>vuelvo</td>
+                            <td>vuelves</td>
+                            <td>vuelve</td>
+                            <td>volvemos</td>
+                            <td>volvéis</td>
+                            <td>vuelven</td>
+                        </tr>
+                        <tr>
+                            <td>e→i</td>
+                            <td>pedir</td>
+                            <td>pido</td>
+                            <td>pides</td>
+                            <td>pide</td>
+                            <td>pedimos</td>
+                            <td>pedís</td>
+                            <td>piden</td>
+                        </tr>
+                        <tr>
+                            <td>e→i</td>
+                            <td>seguir</td>
+                            <td>sigo</td>
+                            <td>sigues</td>
+                            <td>sigue</td>
+                            <td>seguimos</td>
+                            <td>seguís</td>
+                            <td>siguen</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tip-box" style="margin-top:12px">
+                    <strong>Astuce "botte":</strong> Le changement a lieu dans les formes qui forment une "botte" (yo,
+                    tú, él, ellos) — jamais nosotros/vosotros.
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== MÉTHODE CE ===================== -->
+        <div class="section" id="ce">
+            <div class="section-title">🔍 Méthode Compréhension Écrite (CE)</div>
+
+            <div class="tip-box">
+                <span class="tip-icon">⏱</span><strong>Gestion du temps :</strong> CE = environ 45-50 min. Lis d'abord
+                les questions, puis le texte.
+            </div>
+
+            <div class="card">
+                <h3>📋 Étapes à suivre</h3>
+                <div class="phrase-list">
+                    <div class="phrase-item">
+                        <div class="phrase-es">1. Leer las preguntas primero</div>
+                        <div class="phrase-fr">Lis les questions AVANT le texte pour savoir ce qu'on cherche</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">2. Primera lectura global</div>
+                        <div class="phrase-fr">Première lecture rapide pour comprendre le thème et la structure</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">3. Segunda lectura detallada</div>
+                        <div class="phrase-fr">Deuxième lecture en soulignant les informations clés</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">4. Responder con tus propias palabras</div>
+                        <div class="phrase-fr">Réponds avec tes propres mots, ne recopie pas le texte mot à mot</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">5. Justifica siempre con el texto</div>
+                        <div class="phrase-fr">Justifie toujours tes réponses avec une référence au texte</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📝 Formulations pour la CE</h3>
+                <div class="phrase-list">
+                    <div class="phrase-item">
+                        <div class="phrase-es">Según el texto, …</div>
+                        <div class="phrase-fr">Selon le texte, …</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">El autor explica que…</div>
+                        <div class="phrase-fr">L'auteur explique que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">En el texto, se menciona / se indica que…</div>
+                        <div class="phrase-fr">Dans le texte, il est mentionné / indiqué que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">El documento aborda el tema de…</div>
+                        <div class="phrase-fr">Le document aborde le thème de…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">La idea principal es que…</div>
+                        <div class="phrase-fr">L'idée principale est que…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Lo que el autor quiere decir es…</div>
+                        <div class="phrase-fr">Ce que l'auteur veut dire, c'est…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">El texto tiene como objetivo…</div>
+                        <div class="phrase-fr">Le texte a pour objectif de…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">En la línea X, el autor afirma que…</div>
+                        <div class="phrase-fr">À la ligne X, l'auteur affirme que…</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>⚠️ Pièges fréquents à éviter</h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item" style="border-left-color: var(--red)">
+                        <div class="vocab-es">actualmente ≠ actuellement</div>
+                        <div class="vocab-fr">actualmente = de nos jours / actuellement = a veces</div>
+                    </div>
+                    <div class="vocab-item" style="border-left-color: var(--red)">
+                        <div class="vocab-es">embarazada ≠ embarrassée</div>
+                        <div class="vocab-fr">embarazada = enceinte !</div>
+                    </div>
+                    <div class="vocab-item" style="border-left-color: var(--red)">
+                        <div class="vocab-es">realizar ≠ réaliser</div>
+                        <div class="vocab-fr">realizar = réaliser MAIS aussi "effectuer, accomplir"</div>
+                    </div>
+                    <div class="vocab-item" style="border-left-color: var(--red)">
+                        <div class="vocab-es">sensible ≠ sensible</div>
+                        <div class="vocab-fr">sensible (esp.) = sensible, mais también "significatif"</div>
+                    </div>
+                    <div class="vocab-item" style="border-left-color: var(--red)">
+                        <div class="vocab-es">constipado ≠ constipé</div>
+                        <div class="vocab-fr">constipado = enrhumé !</div>
+                    </div>
+                    <div class="vocab-item" style="border-left-color: var(--red)">
+                        <div class="vocab-es">éxito ≠ exode</div>
+                        <div class="vocab-fr">éxito = succès / éxodo = exode</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== MÉTHODE EE ===================== -->
+        <div class="section" id="ee">
+            <div class="section-title">✍️ Méthode Expression Écrite (EE)</div>
+
+            <div class="tip-box">
+                <span class="tip-icon">⏱</span><strong>Gestion du temps :</strong> EE = environ 1h10. Plan : 5 min /
+                Rédaction : 55 min / Relecture : 10 min.
+            </div>
+
+            <div class="card">
+                <h3>📋 Structure type d'un texte</h3>
+                <div class="phrase-list">
+                    <div class="phrase-item">
+                        <div class="phrase-es">Introducción (2-3 lignes)</div>
+                        <div class="phrase-fr">Présenter le sujet et annoncer ta thèse. Phrase d'accroche +
+                            problématique simple</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Desarrollo — 2 párrafos</div>
+                        <div class="phrase-fr">Argument + exemple + lien vers idée suivante. Utilise les connecteurs !
+                        </div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Conclusión (2-3 lignes)</div>
+                        <div class="phrase-fr">Résumer, donner ton avis personnel, ouvrir sur une perspective</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>✅ Critères notés par le correcteur</h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item" style="border-left-color: var(--green)">
+                        <div class="vocab-es">Coherencia y cohesión</div>
+                        <div class="vocab-fr">Texte logique et bien enchaîné</div>
+                    </div>
+                    <div class="vocab-item" style="border-left-color: var(--green)">
+                        <div class="vocab-es">Riqueza léxica</div>
+                        <div class="vocab-fr">Variété du vocabulaire (évite les répétitions)</div>
+                    </div>
+                    <div class="vocab-item" style="border-left-color: var(--green)">
+                        <div class="vocab-es">Corrección gramatical</div>
+                        <div class="vocab-fr">Peu de fautes de conjugaison et d'accord</div>
+                    </div>
+                    <div class="vocab-item" style="border-left-color: var(--green)">
+                        <div class="vocab-es">Adecuación al tema</div>
+                        <div class="vocab-fr">Respecter le sujet donné</div>
+                    </div>
+                    <div class="vocab-item" style="border-left-color: var(--green)">
+                        <div class="vocab-es">Extensión suficiente</div>
+                        <div class="vocab-fr">Respecter la longueur demandée (en général 150-200 mots)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🚀 Plan type pour une lettre / email</h3>
+                <div class="phrase-list">
+                    <div class="phrase-item">
+                        <div class="phrase-es">Estimado/a… / Querido/a…</div>
+                        <div class="phrase-fr">Formel : Estimado/a / Informel : Querido/a + prénom</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Me dirijo a usted para… / Te escribo para…</div>
+                        <div class="phrase-fr">Je vous écris pour… / Je t'écris pour…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">En primer lugar, me gustaría…</div>
+                        <div class="phrase-fr">En premier lieu, j'aimerais…</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Espero su respuesta. / Un saludo cordial.</div>
+                        <div class="phrase-fr">J'attends votre réponse. / Cordialement.</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Un abrazo / Hasta pronto</div>
+                        <div class="phrase-fr">Grosses bises / À bientôt (informel)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>💡 Astuces pour briller à l'EE</h3>
+                <div class="phrase-list">
+                    <div class="phrase-item">
+                        <div class="phrase-es">Utiliza el subjonctivo</div>
+                        <div class="phrase-fr">"Espero que esto mejore" → montre que tu maîtrises le subjonctif</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Usa el condicional para las hipótesis</div>
+                        <div class="phrase-fr">"Si tuviera más tiempo, estudiaría más" → structure si + subj. imp. +
+                            conditionnel</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Varía los tiempos verbales</div>
+                        <div class="phrase-fr">Alterne passé, présent, futur pour montrer ta maîtrise</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">Evita "muy + adjetivo"</div>
+                        <div class="phrase-fr">Remplace par : sumamente, extremadamente, tremendamente, bastante</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-es">No repitas "decir"</div>
+                        <div class="phrase-fr">Alterne : afirmar, señalar, destacar, sostener, indiquer, mencionar</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div><!-- end container -->
+
+    <script>
+        function show(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+
+            // On s'assure de ne pas activer le bouton Quiz si on clique dessus dans la nav
+            if (!event.target.classList.contains('nav-quiz')) {
+                event.target.classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>

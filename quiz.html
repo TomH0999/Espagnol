@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Vocabulaire Espagnol B1</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --red: #c0392b;
+            --yellow: #f39c12;
+            --dark: #1a1a2e;
+            --mid: #16213e;
+            --card: #0f3460;
+            --accent: #e94560;
+            --gold: #f5c518;
+            --text: #eaeaea;
+            --muted: #a0a8b8;
+            --green: #27ae60;
+            --blue: #2980b9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            width: 100%;
+            max-width: 650px;
+            background: var(--mid);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #category-tag {
+            background: rgba(233, 69, 96, 0.2);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .score-box {
+            background: var(--card);
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-weight: 700;
+            color: var(--gold);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            color: #fff;
+        }
+
+        .question-box h2 strong {
+            color: var(--gold);
+            border-bottom: 2px dashed var(--gold);
+            padding-bottom: 2px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .option {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            font-size: 1rem;
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            outline: none;
+        }
+
+        .option:hover:not([disabled]) {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .option.correct {
+            background: var(--green) !important;
+            border-color: #fff !important;
+            color: #fff !important;
+            font-weight: 700;
+        }
+
+        .option.wrong {
+            background: var(--red) !important;
+            border-color: #fff !important;
+            color: #fff !important;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            min-height: 28px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 1.05rem;
+        }
+
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-next {
+            background: var(--gold);
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(245, 197, 24, 0.2);
+        }
+
+        .btn-next:hover {
+            background: #fff;
+            transform: translateY(-1px);
+        }
+
+        .btn-quit {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-quit:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .result-screen {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .result-screen h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .result-score {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin: 25px 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .result-text {
+            font-size: 1.1rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 480px) {
+            .quiz-container {
+                padding: 20px;
+            }
+
+            .controls {
+                flex-direction: column-reverse;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quiz-container">
+        <div id="quiz-game">
+            <div class="header">
+                <span id="category-tag">Vocabulaire</span>
+                <div class="score-box">Score : <span id="score">0</span></div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+
+            <div id="question-content">
+                <div class="question-box">
+                    <h2 id="question-text">Chargement de la question...</h2>
+                </div>
+                <div class="options-grid" id="options">
+                    <!-- Généré en JS -->
+                </div>
+                <div class="feedback" id="feedback"></div>
+                <div class="controls">
+                    <button class="btn btn-quit" onclick="window.location.href='index.html'">Quitter</button>
+                    <button class="btn btn-next hidden" id="next-btn" onclick="nextQuestion()">Suivant →</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-screen" class="hidden">
+            <div class="result-screen">
+                <h2>Quiz Terminé !</h2>
+                <div class="result-score" id="final-score">0 / 20</div>
+                <p class="result-text" id="result-text">Chargement des résultats...</p>
+                <button class="btn btn-next" onclick="initQuiz()" style="width: 100%; margin-bottom: 12px;">Recommencer
+                    le quiz</button>
+                <button class="btn btn-quit" onclick="window.location.href='index.html'" style="width: 100%;">Retourner
+                    à la fiche</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Extraction complète de tout le vocabulaire présent dans index.html
+        const rawVocab = [
+            // Connecteurs logiques
+            { es: "sin embargo", fr: "cependant, pourtant", cat: "Connecteurs logiques" },
+            { es: "además", fr: "de plus, en outre", cat: "Connecteurs logiques" },
+            { es: "por lo tanto", fr: "par conséquent, donc", cat: "Connecteurs logiques" },
+            { es: "no obstante", fr: "néanmoins, toutefois", cat: "Connecteurs logiques" },
+            { es: "por eso / por ello", fr: "c'est pourquoi, pour cela", cat: "Connecteurs logiques" },
+            { es: "a pesar de (que)", fr: "malgré, bien que", cat: "Connecteurs logiques" },
+            { es: "aunque", fr: "bien que, même si", cat: "Connecteurs logiques" },
+            { es: "puesto que / ya que", fr: "puisque, étant donné que", cat: "Connecteurs logiques" },
+            { es: "es decir", fr: "c'est-à-dire", cat: "Connecteurs logiques" },
+            { es: "en cambio", fr: "en revanche", cat: "Connecteurs logiques" },
+            { es: "de hecho", fr: "en fait, effectivement", cat: "Connecteurs logiques" },
+            { es: "por un lado… por otro", fr: "d'un côté… de l'autre", cat: "Connecteurs logiques" },
+            { es: "tanto… como", fr: "aussi bien… que", cat: "Connecteurs logiques" },
+            { es: "ante todo", fr: "avant tout, surtout", cat: "Connecteurs logiques" },
+            { es: "en definitiva", fr: "en définitive, bref", cat: "Connecteurs logiques" },
+            { es: "a fin de (que)", fr: "afin de/que", cat: "Connecteurs logiques" },
+
+            // Société & jeunesse
+            { es: "la juventud", fr: "la jeunesse", cat: "Société & Jeunesse" },
+            { es: "el paro / el desempleo", fr: "le chômage", cat: "Société & Jeunesse" },
+            { es: "la desigualdad", fr: "l'inégalité", cat: "Société & Jeunesse" },
+            { es: "el bienestar", fr: "le bien-être", cat: "Société & Jeunesse" },
+            { es: "la pobreza / la riqueza", fr: "la pauvreté / la richesse", cat: "Société & Jeunesse" },
+            { es: "la convivencia", fr: "la cohabitation, le vivre ensemble", cat: "Société & Jeunesse" },
+            { es: "el ciudadano", fr: "le citoyen", cat: "Société & Jeunesse" },
+            { es: "el poder adquisitivo", fr: "le pouvoir d'achat", cat: "Société & Jeunesse" },
+
+            // Environnement & technologie
+            { es: "el medio ambiente", fr: "l'environnement", cat: "Environnement & Tech" },
+            { es: "el cambio climático", fr: "le changement climatique", cat: "Environnement & Tech" },
+            { es: "las energías renovables", fr: "les énergies renouvelables", cat: "Environnement & Tech" },
+            { es: "el desarrollo sostenible", fr: "le développement durable", cat: "Environnement & Tech" },
+            { es: "las redes sociales", fr: "les réseaux sociaux", cat: "Environnement & Tech" },
+            { es: "la inteligencia artificial", fr: "l'intelligence artificielle", cat: "Environnement & Tech" },
+            { es: "la brecha digital", fr: "la fracture numérique", cat: "Environnement & Tech" },
+            { es: "el consumo / el consumidor", fr: "la consommation / le consommateur", cat: "Environnement & Tech" },
+
+            // Immigration & identité
+            { es: "la inmigración / el inmigrante", fr: "l'immigration / l'immigrant", cat: "Immigration & Identité" },
+            { es: "la integración", fr: "l'intégration", cat: "Immigration & Identité" },
+            { es: "la identidad", fr: "l'identité", cat: "Immigration & Identité" },
+            { es: "la herencia cultural", fr: "l'héritage culturel", cat: "Immigration & Identité" },
+            { es: "la diversidad", fr: "la diversité", cat: "Immigration & Identité" },
+            { es: "el racismo / la discriminación", fr: "le racisme / la discrimination", cat: "Immigration & Identité" },
+
+            // Verbes utiles & courants
+            { es: "afirmar / sostener", fr: "affirmer / soutenir", cat: "Verbes utiles" },
+            { es: "destacar", fr: "mettre en avant, souligner", cat: "Verbes utiles" },
+            { es: "señalar", fr: "signaler, indiquer, souligner", cat: "Verbes utiles" },
+            { es: "plantear", fr: "poser (un problème), soulever", cat: "Verbes utiles" },
+            { es: "suponer", fr: "supposer, représenter", cat: "Verbes utiles" },
+            { es: "lograr / conseguir", fr: "réussir à, parvenir à", cat: "Verbes utiles" },
+            { es: "tratar de + inf.", fr: "essayer de + inf.", cat: "Verbes utiles" },
+            { es: "depender de", fr: "dépendre de", cat: "Verbes utiles" },
+            { es: "influir en", fr: "influencer, avoir un impact sur", cat: "Verbes utiles" },
+            { es: "llevar a cabo", fr: "mener à bien, réaliser", cat: "Verbes utiles" },
+            { es: "darse cuenta de", fr: "se rendre compte de", cat: "Verbes utiles" },
+            { es: "hacer frente a", fr: "faire face à", cat: "Verbes utiles" },
+            { es: "tener en cuenta", fr: "tenir compte de, prendre en compte", cat: "Verbes utiles" },
+            { es: "poner en marcha", fr: "mettre en place, lancer", cat: "Verbes utiles" },
+            { es: "cabe destacar", fr: "il convient de souligner", cat: "Verbes utiles" },
+            { es: "cabe preguntarse", fr: "on peut se demander", cat: "Verbes utiles" },
+
+            // Adjectifs & adverbes utiles
+            { es: "actual(mente)", fr: "actuel(lement) (pas réellement !)", cat: "Adjectifs & Adverbes" },
+            { es: "actualmente", fr: "actuellement, de nos jours", cat: "Adjectifs & Adverbes" },
+            { es: "realmente / verdaderamente", fr: "vraiment, réellement", cat: "Adjectifs & Adverbes" },
+            { es: "especialmente / sobre todo", fr: "surtout, particulièrement", cat: "Adjectifs & Adverbes" },
+            { es: "cada vez más / menos", fr: "de plus en plus / de moins en moins", cat: "Adjectifs & Adverbes" },
+            { es: "sin duda (alguna)", fr: "sans aucun doute", cat: "Adjectifs & Adverbes" },
+            { es: "a menudo / frecuentemente", fr: "souvent, fréquemment", cat: "Adjectifs & Adverbes" },
+            { es: "apenas", fr: "à peine, presque pas", cat: "Adjectifs & Adverbes" },
+            { es: "todavía / aún", fr: "encore, toujours", cat: "Adjectifs & Adverbes" },
+            { es: "ya no", fr: "ne plus", cat: "Adjectifs & Adverbes" },
+            { es: "imprescindible", fr: "indispensable, incontournable", cat: "Adjectifs & Adverbes" },
+            { es: "llamativo/a", fr: "frappant, qui attire l'attention", cat: "Adjectifs & Adverbes" },
+
+            // Pièges fréquents & faux-amis
+            { es: "embarazada", fr: "enceinte (faux-ami de 'embarrassée')", cat: "Pièges & Faux-amis" },
+            { es: "realizar", fr: "effectuer, accomplir (faux-ami de 'réaliser')", cat: "Pièges & Faux-amis" },
+            { es: "sensible", fr: "sensible / significatif", cat: "Pièges & Faux-amis" },
+            { es: "constipado", fr: "enrhumé (faux-ami de 'constipé')", cat: "Pièges & Faux-amis" },
+            { es: "éxito", fr: "succès (faux-ami d'exode')", cat: "Pièges & Faux-amis" }
+        ];
+
+        let quizQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+        const totalQuestions = 20; // Nombre de questions par partie
+
+        function initQuiz() {
+            quizQuestions = [];
+            score = 0;
+            currentIndex = 0;
+
+            document.getElementById('score').innerText = "0";
+            document.getElementById('quiz-game').classList.remove('hidden');
+            document.getElementById('result-screen').classList.add('hidden');
+
+            // Génération d'une sélection de 20 questions aléatoires
+            let shuffledVocab = [...rawVocab].sort(() => Math.random() - 0.5);
+            let selectedVocab = shuffledVocab.slice(0, totalQuestions);
+
+            selectedVocab.forEach(item => {
+                // Alternance aléatoire entre : "Traduire vers le Français" et "Traduire vers l'Espagnol"
+                let isEsToFr = Math.random() > 0.5;
+                if (isEsToFr) {
+                    quizQuestions.push({
+                        questionText: `Que signifie : <strong>"${item.es}"</strong> ?`,
+                        correctAnswer: item.fr,
+                        category: item.cat,
+                        type: "ES_TO_FR"
+                    });
+                } else {
+                    quizQuestions.push({
+                        questionText: `Comment dit-on : <strong>"${item.fr}"</strong> ?`,
+                        correctAnswer: item.es,
+                        category: item.cat,
+                        type: "FR_TO_ES"
+                    });
+                }
+            });
+
+            showQuestion();
+        }
+
+        function getFalseOptions(correct, type) {
+            let pool = [];
+            if (type === "ES_TO_FR") {
+                pool = rawVocab.map(i => i.fr);
+            } else {
+                pool = rawVocab.map(i => i.es);
+            }
+
+            // Supprimer les doublons et la bonne réponse du pool de faux choix
+            let filteredPool = [...new Set(pool)].filter(ans => ans !== correct);
+
+            // Mélanger et piocher 3 mauvaises réponses
+            let wrongChoices = filteredPool.sort(() => Math.random() - 0.5).slice(0, 3);
+
+            // Combiner avec la bonne réponse et remélanger
+            let finalOptions = [...wrongChoices, correct];
+            return finalOptions.sort(() => Math.random() - 0.5);
+        }
+
+        function showQuestion() {
+            const currentQ = quizQuestions[currentIndex];
+
+            // Mettre à jour l'UI de la question
+            document.getElementById('category-tag').innerText = currentQ.category;
+            document.getElementById('question-text').innerHTML = currentQ.questionText;
+            document.getElementById('feedback').innerText = "";
+            document.getElementById('next-btn').classList.add('hidden');
+
+            // Générer les options
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = "";
+
+            const options = getFalseOptions(currentQ.correctAnswer, currentQ.type);
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(btn, opt, currentQ.correctAnswer);
+                optionsDiv.appendChild(btn);
+            });
+
+            updateProgressBar();
+        }
+
+        function checkAnswer(selectedBtn, selectedValue, correctValue) {
+            const allButtons = document.querySelectorAll('.option');
+
+            // Désactiver tous les boutons après le clic
+            allButtons.forEach(btn => btn.disabled = true);
+
+            if (selectedValue === correctValue) {
+                selectedBtn.classList.add('correct');
+                score++;
+                document.getElementById('score').innerText = score;
+                document.getElementById('feedback').innerText = "¡ Excelente ! ¡ Muy bien ! 🎉";
+                document.getElementById('feedback').style.color = "var(--green)";
+            } else {
+                selectedBtn.classList.add('wrong');
+                document.getElementById('feedback').innerText = `Oups ! La bonne réponse était : "${correctValue}"`;
+                document.getElementById('feedback').style.color = "var(--red)";
+
+                // Surligner la bonne réponse pour aider l'élève
+                allButtons.forEach(btn => {
+                    if (btn.innerText === correctValue) {
+                        btn.classList.add('correct');
+                    }
+                });
+            }
+
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex < quizQuestions.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function updateProgressBar() {
+            const percentage = (currentIndex / totalQuestions) * 100;
+            document.getElementById('progress').style.width = `${percentage}%`;
+        }
+
+        function showResults() {
+            document.getElementById('progress').style.width = `100%`;
+            document.getElementById('quiz-game').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+
+            document.getElementById('final-score').innerText = `${score} / ${totalQuestions}`;
+
+            let evaluation = "";
+            const ratio = score / totalQuestions;
+
+            if (ratio === 1) {
+                evaluation = "¡ Perfecto ! Tu maîtrises le vocabulaire sur le bout des doigts. Prêt pour l'examen ! 🌟";
+            } else if (ratio >= 0.8) {
+                evaluation = "¡ Excelente ! Très bon niveau de vocabulaire. C'est parfait pour le Bac B1 ! 🚀";
+            } else if (ratio >= 0.6) {
+                evaluation = "Buen trabajo. Tu as de bonnes bases, relis un coup la fiche pour peaufiner les petits pièges. 👍";
+            } else if (ratio >= 0.4) {
+                evaluation = "C'est un début, mais il faut encore t'entraîner. N'hésite pas à relire la fiche méthodologique. 📖";
+            } else {
+                evaluation = "Il est nécessaire de relire attentivement la fiche de vocabulaire avant de retenter le quiz ! Courage ! 💪";
+            }
+
+            document.getElementById('result-text').innerText = evaluation;
+        }
+
+        // Lancement initial du quiz
+        initQuiz();
+    </script>
+</body>
+
+</html>
