@@ -75,13 +75,18 @@
             font-weight: 300;
         }
 
-        /* NOUVEAU STYLE BOUTON QUIZ HERO */
-        .btn-quiz-hero {
+        /* BOUTONS HERO */
+        .btn-group-hero {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero {
             display: inline-block;
-            margin-top: 20px;
             padding: 12px 28px;
-            background-color: var(--gold);
-            color: var(--dark);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
@@ -90,16 +95,26 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .btn-quiz-hero:hover {
+        .btn-quiz-hero {
+            background-color: var(--gold);
+            color: var(--dark);
+        }
+
+        .btn-flash-hero {
+            background-color: var(--blue);
+            color: white;
+        }
+
+        .btn-hero:hover {
             transform: scale(1.05);
-            background-color: #fff;
+            filter: brightness(1.1);
         }
 
         .badges {
             display: flex;
             gap: 10px;
             justify-content: center;
-            margin-top: 16px;
+            margin-top: 25px;
             flex-wrap: wrap;
         }
 
@@ -162,12 +177,17 @@
             color: #fff;
         }
 
-        /* BOUTON QUIZ DANS NAV */
+        /* BOUTONS SPECIAUX NAV */
         .nav-quiz {
             background: var(--green) !important;
             color: white !important;
             margin-left: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-flash {
+            background: var(--blue) !important;
+            color: white !important;
+            margin-left: 5px;
         }
 
         /* LAYOUT */
@@ -498,8 +518,11 @@
         <h1>Bac Espagnol <span>B1</span></h1>
         <p>Compréhension Écrite · Expression Écrite · Fiche de révision complète</p>
 
-        <!-- BOUTON AJOUTÉ ICI -->
-        <a href="quiz.html" class="btn-quiz-hero">✍️ S'entraîner au Quiz</a>
+        <!-- BOUTONS AJOUTÉS ICI -->
+        <div class="btn-group-hero">
+            <a href="quiz.html" class="btn-hero btn-quiz-hero">✍️ S'entraîner au Quiz</a>
+            <a href="flashcards.html" class="btn-hero btn-flash-hero">🎴 Flashcards Vocabulaire</a>
+        </div>
 
         <div class="badges">
             <span class="badge">📖 CE — Comprensión</span>
@@ -518,8 +541,9 @@
             <button class="nav-btn" onclick="show('ce')">🔍 Méthode CE</button>
             <button class="nav-btn" onclick="show('ee')">✍️ Méthode EE</button>
 
-            <!-- BOUTON AJOUTÉ DANS LA NAV -->
-            <a href="quiz.html" class="nav-btn nav-quiz">🚀 Mode Quiz</a>
+            <!-- BOUTONS DANS LA NAV -->
+            <a href="quiz.html" class="nav-btn nav-quiz">🚀 Quiz</a>
+            <a href="flashcards.html" class="nav-btn nav-flash">🎴 Flashcards</a>
         </div>
     </nav>
 
@@ -680,7 +704,7 @@
                         <div class="vocab-fr">l'immigration / l'immigrant</div>
                     </div>
                     <div class="vocab-item">
-                        <div class="vocab-es">la integración</div>
+                        <div class="vocab-es">la integration</div>
                         <div class="vocab-fr">l'intégration</div>
                     </div>
                     <div class="vocab-item">
@@ -692,7 +716,7 @@
                         <div class="vocab-fr">l'héritage culturel</div>
                     </div>
                     <div class="vocab-item">
-                        <div class="vocab-es">la diversity</div>
+                        <div class="vocab-es">la diversidad</div>
                         <div class="vocab-fr">la diversité</div>
                     </div>
                     <div class="vocab-item">
@@ -792,7 +816,7 @@
                         <div class="vocab-fr">surtout, particulièrement</div>
                     </div>
                     <div class="vocab-item">
-                        <div class="vocab-es">cada vez más / menos</div>
+                        <div class="vocab-es">cada vez más / moins</div>
                         <div class="vocab-fr">de plus en plus / de moins en moins</div>
                     </div>
                     <div class="vocab-item">
@@ -1010,7 +1034,7 @@
                 <span class="tip-icon">💡</span><strong>Rappel des 3 groupes :</strong>
                 <br>• Groupe 1 : verbes en <strong>-AR</strong> (hablar, trabajar, escuchar…)
                 <br>• Groupe 2 : verbes en <strong>-ER</strong> (comer, beber, leer…)
-                <br>• Groupe 3 : verbes en <strong>-IR</strong> (vivir, escribir, abrir…)
+                <br>• Groupe 3 : verbes en <strong>-IR</strong> (vivir, escribir, abrirlos…)
                 <br><br>Les pronoms : <span class="yo">yo</span>, <span class="tu">tú</span>, <span
                     class="el">él/ella/Ud.</span>, <span class="nos">nosotros</span>, <span class="vos">vosotros</span>,
                 <span class="ellos">ellos/Uds.</span>
@@ -1176,7 +1200,7 @@
                     </table>
                 </div>
                 <div class="tip-box" style="margin-top:12px">
-                    <strong>Marqueurs temporels :</strong> antes, cuando era pequeño, siempre, a menudo, todos los días,
+                    <strong>Marqueurs temporels :</strong> antes, quand era pequeño, siempre, a menudo, todos los días,
                     en aquella época, de niño
                     <br><strong>⚠️ Seulement 3 irréguliers :</strong> ser (era…), ir (iba…), ver (veía…)
                 </div>
@@ -1556,7 +1580,7 @@
                     <div class="irreg-meaning">pouvoir</div>
                     <div class="irreg-forms">
                         <div class="irreg-row"><span class="irreg-sub tag tag-blue">Présent</span><span
-                                class="irreg-val">puedo, puedes, peut, podemos, podéis, pueden</span></div>
+                                class="irreg-val">puedo, puedes, puede, podemos, podéis, pueden</span></div>
                         <div class="irreg-row"><span class="irreg-sub tag tag-green">Indéfini</span><span
                                 class="irreg-val">pude, pudiste, pudo, pudimos, pudisteis, pudieron</span></div>
                         <div class="irreg-row"><span class="irreg-sub tag tag-red">Futur</span><span
@@ -1926,7 +1950,7 @@
                     </div>
                     <div class="vocab-item" style="border-left-color: var(--red)">
                         <div class="vocab-es">sensible ≠ sensible</div>
-                        <div class="vocab-fr">sensible (esp.) = sensible, mais también "significatif"</div>
+                        <div class="vocab-fr">sensible (esp.) = sensible, mais aussi "significatif"</div>
                     </div>
                     <div class="vocab-item" style="border-left-color: var(--red)">
                         <div class="vocab-es">constipado ≠ constipé</div>
@@ -2043,7 +2067,7 @@
                     </div>
                     <div class="phrase-item">
                         <div class="phrase-es">No repitas "decir"</div>
-                        <div class="phrase-fr">Alterne : afirmar, señalar, destacar, sostener, indiquer, mencionar</div>
+                        <div class="phrase-fr">Alterne : afirmar, señalar, destacar, sostener, indicar, mencionar</div>
                     </div>
                 </div>
             </div>
@@ -2059,7 +2083,7 @@
             document.getElementById(id).classList.add('active');
 
             // On s'assure de ne pas activer le bouton Quiz si on clique dessus dans la nav
-            if (!event.target.classList.contains('nav-quiz')) {
+            if (event && !event.target.classList.contains('nav-quiz') && !event.target.classList.contains('nav-flash')) {
                 event.target.classList.add('active');
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
